@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="rmkk.dao.DocumentMapper" >
+  <resultMap id="BaseResultMap" type="rmkk.entity.Document" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="documentid" property="documentid" jdbcType="VARCHAR" />
+    <result column="documentname" property="documentname" jdbcType="VARCHAR" />
+    <result column="istemplate" property="istemplate" jdbcType="INTEGER"/>
+    <result column="sealid" property="sealid" jdbcType="VARCHAR" />
+    <result column="needride" property="needride" jdbcType="INTEGER" />
+    <result column="rideid" property="rideid" jdbcType="VARCHAR" />
+    <result column="documentstate" property="documentstate" jdbcType="INTEGER" />
+    <result column="documenturl" property="documenturl" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, documentid,documentname,istemplate,sealid, needride,rideid,documentstate,documenturl,createtime
+  </sql>
+  <insert id="insertSelective" parameterType="rmkk.entity.Document" >
+    insert into document
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="documentid != null" >
+        documentid,
+      </if>
+      <if test="documentname != null" >
+        documentname,
+      </if>
+      <if test="sealtype != null" >
+        istemplate,
+      </if>
+      <if test="sealid != null" >
+        sealid,
+      </if>
+      <if test="needride != null" >
+        needride,
+      </if>
+      <if test="rideid != null" >
+        rideid,
+      </if>
+      <if test="documentstate != null" >
+        documentstate,
+      </if>
+      <if test="documenturl != null" >
+        documenturl,
+      </if>
+        createtime
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="documentid != null" >
+        #{documentid},
+      </if>
+      <if test="sealname != null" >
+        #{documentname},
+      </if>
+      <if test="istemplate != null" >
+        #{istemplate},
+      </if>
+      <if test="sealid != null" >
+        #{sealid},
+      </if>
+      <if test="needride != null" >
+        #{needride},
+      </if>
+      <if test="rideid != null" >
+        #{rideid},
+      </if>
+      <if test="documentstate != null" >
+        #{documentstate},
+      </if>
+      <if test="documenturl != null" >
+        #{documenturl},
+      </if>
+		now()
+    </trim>
+  </insert>
+</mapper>

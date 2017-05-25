@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="rmkk.dao.TaskMapper" >
+  <resultMap id="BaseResultMap" type="rmkk.entity.Task" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="taskid" property="taskid" jdbcType="VARCHAR" />
+    <result column="taskstate" property="taskstate" jdbcType="INTEGER" />
+    <result column="tasktype" property="tasktype" jdbcType="INTEGER" />
+    <result column="sponsorid" property="sponsorid" jdbcType="VARCHAR" />
+    <result column="sealid" property="sealid" jdbcType="VARCHAR" />
+    <result column="sealsnum" property="sealsnum" jdbcType="INTEGER" />
+    <result column="documentid" property="documentid" jdbcType="VARCHAR" />
+    <result column="operatorid" property="operatorid" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="overtime" property="overtime" jdbcType="TIMESTAMP" />
+    <result column="deptopinion" property="deptopinion" jdbcType="VARCHAR" />
+    <result column="dotopinion" property="dotopinion" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, taskid, taskstate, tasktype, sponsorid, sealid, sealsnum, documentid, operatorid, 
+    createtime, overtime, deptopinion, dotopinion
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from task
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from task
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="rmkk.entity.Task" >
+    insert into task (id, taskid, taskstate, 
+      tasktype, sponsorid, sealid, 
+      sealsnum, documentid, operatorid, 
+      createtime, overtime, deptopinion, 
+      dotopinion)
+    values (#{id,jdbcType=INTEGER}, #{taskid,jdbcType=VARCHAR}, #{taskstate,jdbcType=INTEGER}, 
+      #{tasktype,jdbcType=INTEGER}, #{sponsorid,jdbcType=VARCHAR}, #{sealid,jdbcType=VARCHAR}, 
+      #{sealsnum,jdbcType=INTEGER}, #{documentid,jdbcType=VARCHAR}, #{operatorid,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{overtime,jdbcType=TIMESTAMP}, #{deptopinion,jdbcType=VARCHAR}, 
+      #{dotopinion,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="rmkk.entity.Task" >
+    insert into task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="taskid != null" >
+        taskid,
+      </if>
+      <if test="taskstate != null" >
+        taskstate,
+      </if>
+      <if test="tasktype != null" >
+        tasktype,
+      </if>
+      <if test="sponsorid != null" >
+        sponsorid,
+      </if>
+      <if test="sealid != null" >
+        sealid,
+      </if>
+      <if test="sealsnum != null" >
+        sealsnum,
+      </if>
+      <if test="documentid != null" >
+        documentid,
+      </if>
+      <if test="operatorid != null" >
+        operatorid,
+      </if>
+        createtime,
+      <if test="overtime != null" >
+        overtime,
+      </if>
+      <if test="deptopinion != null" >
+        deptopinion,
+      </if>
+      <if test="dotopinion != null" >
+        dotopinion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="taskid != null" >
+        #{taskid,jdbcType=VARCHAR},
+      </if>
+      <if test="taskstate != null" >
+        #{taskstate,jdbcType=INTEGER},
+      </if>
+      <if test="tasktype != null" >
+        #{tasktype,jdbcType=INTEGER},
+      </if>
+      <if test="sponsorid != null" >
+        #{sponsorid,jdbcType=VARCHAR},
+      </if>
+      <if test="sealid != null" >
+        #{sealid,jdbcType=VARCHAR},
+      </if>
+      <if test="sealsnum != null" >
+        #{sealsnum,jdbcType=INTEGER},
+      </if>
+      <if test="documentid != null" >
+        #{documentid,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorid != null" >
+        #{operatorid,jdbcType=VARCHAR},
+      </if>
+        now(),
+      <if test="overtime != null" >
+        #{overtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deptopinion != null" >
+        #{deptopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="dotopinion != null" >
+        #{dotopinion,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="rmkk.entity.Task" >
+    update task
+    <set >
+      <if test="taskid != null" >
+        taskid = #{taskid,jdbcType=VARCHAR},
+      </if>
+      <if test="taskstate != null" >
+        taskstate = #{taskstate,jdbcType=INTEGER},
+      </if>
+      <if test="tasktype != null" >
+        tasktype = #{tasktype,jdbcType=INTEGER},
+      </if>
+      <if test="sponsorid != null" >
+        sponsorid = #{sponsorid,jdbcType=VARCHAR},
+      </if>
+      <if test="sealid != null" >
+        sealid = #{sealid,jdbcType=VARCHAR},
+      </if>
+      <if test="sealsnum != null" >
+        sealsnum = #{sealsnum,jdbcType=INTEGER},
+      </if>
+      <if test="documentid != null" >
+        documentid = #{documentid,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorid != null" >
+        operatorid = #{operatorid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overtime != null" >
+        overtime = #{overtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deptopinion != null" >
+        deptopinion = #{deptopinion,jdbcType=VARCHAR},
+      </if>
+      <if test="dotopinion != null" >
+        dotopinion = #{dotopinion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="rmkk.entity.Task" >
+    update task
+    set taskid = #{taskid,jdbcType=VARCHAR},
+      taskstate = #{taskstate,jdbcType=INTEGER},
+      tasktype = #{tasktype,jdbcType=INTEGER},
+      sponsorid = #{sponsorid,jdbcType=VARCHAR},
+      sealid = #{sealid,jdbcType=VARCHAR},
+      sealsnum = #{sealsnum,jdbcType=INTEGER},
+      documentid = #{documentid,jdbcType=VARCHAR},
+      operatorid = #{operatorid,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      overtime = #{overtime,jdbcType=TIMESTAMP},
+      deptopinion = #{deptopinion,jdbcType=VARCHAR},
+      dotopinion = #{dotopinion,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
