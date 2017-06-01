@@ -61,13 +61,22 @@ $(function(){
 	    buttonAlign: 'left',
 	    accept:"image/png,application/pdf,application/msword"
 	})
+	
 	$("#do_upload").linkbutton({
 		onClick:function(){
+			/* $('#fileup').submit(); */
 			$.ajax({
 				url:"apply/upload",
+				data:$('#fileup').serialize(),
+				dataType:"text",
+				async:false,
 				contentType:false,
+				error: function(request) {
+                    alert("Connection error");
+                },
 				success:function(result){
-					$("#filename").Text(result)
+					console.log(result);
+					$("#filename").text(result)
 				}
 			})
 		}
@@ -103,6 +112,11 @@ $(function(){
 	</form>
 </div>
 <div id="win">
-	<input id="fb" style="width:260px;">
+<form id="fileup" enctype="multipart/form-data" action="apply/upload" method="post">
+	<input id="fb" style="width:260px;" name="aa">
+	<input name="fileType" value="png" type="hidden">
+	<input name="maxSize" value="12" type="hidden">
 	<a id="do_upload">上传</a>
+	
+</form>
 </div>
